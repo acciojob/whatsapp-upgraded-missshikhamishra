@@ -29,7 +29,7 @@ public class WhatsappController {
 
         String response =  whatsappService.createUser(name, mobile);
 
-        if (response.equals("SUCCESS") == false) {
+        if (!response.equals("SUCCESS")) {
             throw new Exception("User already exists");
         }
 
