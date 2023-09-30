@@ -73,12 +73,12 @@ public class WhatsappRepository {
     public int sendMessage(Message message, User sender, Group group) {
 
         // if group is not in groups list, throw error
-        if (!groupUserMap.containsKey(group)) {
+        if (groupUserMap.containsKey(group) == false) {
             return -1;
         }
 
         // user is not in that group, return user not exist
-        if (!groupUserMap.get(group).contains(sender)) {
+        if (groupUserMap.get(group).contains(sender) == false) {
             return -2;
         }
 
@@ -106,15 +106,15 @@ public class WhatsappRepository {
     public String changeAdmin(User approver, User user, Group group) {
 
         // check if the group exists, return with error message if yes
-        if (!groupUserMap.containsKey(group)) {
+        if (groupUserMap.containsKey(group) == false) {
             return "Group does not exist";
         }
         // check if the approver is current admin of the group, if not, return error message
-        if (!adminMap.get(group).equals(approver)) {
+        if (adminMap.get(group).equals(approver) == false) {
             return "Approver does not have rights";
         }
         // check if the user exists in the group
-        if (!groupUserMap.get(group).contains(user)) {
+        if (groupUserMap.get(group).contains(user) == false) {
             return "User is not a participant";
         }
 
